@@ -1,0 +1,52 @@
+package holdme
+
+import "fmt"
+
+// Ordered{{.T}}sNoDups keeps a slice of {{.t}}s in order, without duplicates.
+type Ordered{{.T}}sNoDups []{{.t}}
+
+func (slice Ordered{{.T}}sNoDups) Add(v {{.t}}) Ordered{{.T}}sNoDups {
+    left := 0
+    ln := len(slice)
+    hi := ln
+    for left < hi {
+        mid := (left + hi) / 2
+        if slice[mid] < v {
+            left = mid + 1
+        } else {
+            hi = mid
+        }
+    }
+    if left < ln && slice[left] == v {
+        return slice
+    }
+    if left == ln {
+        return append(slice, v)
+    }
+    slice = append(slice, 0)
+    copy(slice[left+1:], slice[left:])
+    slice[left] = v
+    return slice
+}
+
+func (slice Ordered{{.T}}sNoDups) Remove(v {{.t}}) Ordered{{.T}}sNoDups {
+    left := 0
+    ln := len(slice)
+    hi := ln
+    for left < hi {
+        mid := (left + hi) / 2
+        if slice[mid] < v {
+            left = mid + 1
+        } else {
+            hi = mid
+        }
+    }
+    if left < ln && slice[left] == v {
+        return append(slice[:left], slice[left+1:]...)
+    }
+    return slice
+}
+
+func (slice Ordered{{.T}}sNoDups) String() string {
+    return fmt.Sprintf("%v", []{{.t}}(slice))
+}
