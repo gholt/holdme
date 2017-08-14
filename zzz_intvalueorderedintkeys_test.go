@@ -150,4 +150,19 @@ func Test_IntValueOrderedIntKeys_Move(t *testing.T) {
 	if i3 == i || i3 == i2 {
 		t.Fatal("expected positions to change", x)
 	}
+	x.RandIntn = rand.New(rand.NewSource(2)).Intn
+	x.Move(7, 5)
+	i = helperIntValueOrderedIntKeysFind(t, x, 7)
+	i2 = i
+	for j := 0; j < 100; j++ {
+		x.Move(7, 5)
+		helperIntValueOrderedIntKeysInOrder(t, x)
+		i2 = helperIntValueOrderedIntKeysFind(t, x, 7)
+		if i2 != i {
+			break
+		}
+	}
+	if i2 == i {
+		t.Fatal("expected positions to change", x)
+	}
 }
