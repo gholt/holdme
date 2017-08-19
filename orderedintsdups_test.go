@@ -1,3 +1,5 @@
+// Automatically generated with: gastly orderednumbersdups_test.go ../orderedintsdups_test.go holdme NumericType=droptype:int Number=Int number=int
+
 package holdme
 
 import "testing"

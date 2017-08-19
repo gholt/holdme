@@ -1,10 +1,10 @@
-package holdme
+package internal
 
 import "testing"
 
-func Test_OrderedUint32sNoDups_Add_inOrder(t *testing.T) {
-	var slice OrderedUint32sNoDups
-	for v := uint32(0); v < 10; v++ {
+func Test_OrderedNumbersNoDups_Add_inOrder(t *testing.T) {
+	var slice OrderedNumbersNoDups
+	for v := NumericType(0); v < 10; v++ {
 		slice = slice.Add(v)
 	}
 	if slice.String() != "[0 1 2 3 4 5 6 7 8 9]" {
@@ -12,9 +12,9 @@ func Test_OrderedUint32sNoDups_Add_inOrder(t *testing.T) {
 	}
 }
 
-func Test_OrderedUint32sNoDups_Add_inReverseOrder(t *testing.T) {
-	var slice OrderedUint32sNoDups
-	for v := uint32(9); ; v-- {
+func Test_OrderedNumbersNoDups_Add_inReverseOrder(t *testing.T) {
+	var slice OrderedNumbersNoDups
+	for v := NumericType(9); ; v-- {
 		slice = slice.Add(v)
 		if v == 0 {
 			break
@@ -25,8 +25,8 @@ func Test_OrderedUint32sNoDups_Add_inReverseOrder(t *testing.T) {
 	}
 }
 
-func Test_OrderedUint32sNoDups_Add_inShuffledOrder(t *testing.T) {
-	var slice OrderedUint32sNoDups
+func Test_OrderedNumbersNoDups_Add_inShuffledOrder(t *testing.T) {
+	var slice OrderedNumbersNoDups
 	slice = slice.Add(3)
 	slice = slice.Add(6)
 	slice = slice.Add(4)
@@ -42,8 +42,8 @@ func Test_OrderedUint32sNoDups_Add_inShuffledOrder(t *testing.T) {
 	}
 }
 
-func Test_OrderedUint32sNoDups_Add_inShuffledOrderWithDups(t *testing.T) {
-	var slice OrderedUint32sNoDups
+func Test_OrderedNumbersNoDups_Add_inShuffledOrderWithDups(t *testing.T) {
+	var slice OrderedNumbersNoDups
 	slice = slice.Add(3)
 	slice = slice.Add(6)
 	slice = slice.Add(4)
@@ -74,9 +74,9 @@ func Test_OrderedUint32sNoDups_Add_inShuffledOrderWithDups(t *testing.T) {
 	}
 }
 
-func Test_OrderedUint32sNoDups_Remove(t *testing.T) {
-	var slice OrderedUint32sNoDups
-	for v := uint32(0); v < 10; v++ {
+func Test_OrderedNumbersNoDups_Remove(t *testing.T) {
+	var slice OrderedNumbersNoDups
+	for v := NumericType(0); v < 10; v++ {
 		slice = slice.Add(v)
 	}
 	if slice.String() != "[0 1 2 3 4 5 6 7 8 9]" {

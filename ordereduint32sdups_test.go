@@ -1,3 +1,5 @@
+// Automatically generated with: gastly orderednumbersdups_test.go ../ordereduint32sdups_test.go holdme NumericType=droptype:uint32 Number=Uint32 number=uint32
+
 package holdme
 
 import "testing"

@@ -1,8 +1,10 @@
+// Automatically generated with: gastly orderednumbersdups.go ../orderedintsdups.go holdme NumericType=droptype:int Number=Int number=int
+
 package holdme
 
 import "fmt"
 
-// OrderedIntsDups keeps a slice of ints in order, allowing duplicate values.
+// OrderedIntsDups keeps a list of ints in order, allowing duplicates.
 type OrderedIntsDups []int
 
 func (slice OrderedIntsDups) Add(v int) OrderedIntsDups {

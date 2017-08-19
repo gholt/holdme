@@ -1,11 +1,11 @@
-package holdme
+package internal
 
 import "fmt"
 
-// OrderedUint32sDups keeps a slice of uint32s in order, allowing duplicate values.
-type OrderedUint32sDups []uint32
+// OrderedNumbersNoDups keeps a list of numbers in order, without duplicates.
+type OrderedNumbersNoDups []NumericType
 
-func (slice OrderedUint32sDups) Add(v uint32) OrderedUint32sDups {
+func (slice OrderedNumbersNoDups) Add(v NumericType) OrderedNumbersNoDups {
 	left := 0
 	ln := len(slice)
 	hi := ln
@@ -17,6 +17,9 @@ func (slice OrderedUint32sDups) Add(v uint32) OrderedUint32sDups {
 			hi = mid
 		}
 	}
+	if left < ln && slice[left] == v {
+		return slice
+	}
 	if left == ln {
 		return append(slice, v)
 	}
@@ -26,7 +29,7 @@ func (slice OrderedUint32sDups) Add(v uint32) OrderedUint32sDups {
 	return slice
 }
 
-func (slice OrderedUint32sDups) Remove(v uint32) OrderedUint32sDups {
+func (slice OrderedNumbersNoDups) Remove(v NumericType) OrderedNumbersNoDups {
 	left := 0
 	ln := len(slice)
 	hi := ln
@@ -44,6 +47,6 @@ func (slice OrderedUint32sDups) Remove(v uint32) OrderedUint32sDups {
 	return slice
 }
 
-func (slice OrderedUint32sDups) String() string {
-	return fmt.Sprintf("%v", []uint32(slice))
+func (slice OrderedNumbersNoDups) String() string {
+	return fmt.Sprintf("%v", []NumericType(slice))
 }

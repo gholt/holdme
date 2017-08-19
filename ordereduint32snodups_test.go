@@ -1,10 +1,12 @@
+// Automatically generated with: gastly orderednumbersnodups_test.go ../ordereduint32snodups_test.go holdme NumericType=droptype:uint32 Number=Uint32 number=uint32
+
 package holdme
 
 import "testing"
 
-func Test_OrderedIntsNoDups_Add_inOrder(t *testing.T) {
-	var slice OrderedIntsNoDups
-	for v := int(0); v < 10; v++ {
+func Test_OrderedUint32sNoDups_Add_inOrder(t *testing.T) {
+	var slice OrderedUint32sNoDups
+	for v := uint32(0); v < 10; v++ {
 		slice = slice.Add(v)
 	}
 	if slice.String() != "[0 1 2 3 4 5 6 7 8 9]" {
@@ -12,9 +14,9 @@ func Test_OrderedIntsNoDups_Add_inOrder(t *testing.T) {
 	}
 }
 
-func Test_OrderedIntsNoDups_Add_inReverseOrder(t *testing.T) {
-	var slice OrderedIntsNoDups
-	for v := int(9); ; v-- {
+func Test_OrderedUint32sNoDups_Add_inReverseOrder(t *testing.T) {
+	var slice OrderedUint32sNoDups
+	for v := uint32(9); ; v-- {
 		slice = slice.Add(v)
 		if v == 0 {
 			break
@@ -25,8 +27,8 @@ func Test_OrderedIntsNoDups_Add_inReverseOrder(t *testing.T) {
 	}
 }
 
-func Test_OrderedIntsNoDups_Add_inShuffledOrder(t *testing.T) {
-	var slice OrderedIntsNoDups
+func Test_OrderedUint32sNoDups_Add_inShuffledOrder(t *testing.T) {
+	var slice OrderedUint32sNoDups
 	slice = slice.Add(3)
 	slice = slice.Add(6)
 	slice = slice.Add(4)
@@ -42,8 +44,8 @@ func Test_OrderedIntsNoDups_Add_inShuffledOrder(t *testing.T) {
 	}
 }
 
-func Test_OrderedIntsNoDups_Add_inShuffledOrderWithDups(t *testing.T) {
-	var slice OrderedIntsNoDups
+func Test_OrderedUint32sNoDups_Add_inShuffledOrderWithDups(t *testing.T) {
+	var slice OrderedUint32sNoDups
 	slice = slice.Add(3)
 	slice = slice.Add(6)
 	slice = slice.Add(4)
@@ -74,9 +76,9 @@ func Test_OrderedIntsNoDups_Add_inShuffledOrderWithDups(t *testing.T) {
 	}
 }
 
-func Test_OrderedIntsNoDups_Remove(t *testing.T) {
-	var slice OrderedIntsNoDups
-	for v := int(0); v < 10; v++ {
+func Test_OrderedUint32sNoDups_Remove(t *testing.T) {
+	var slice OrderedUint32sNoDups
+	for v := uint32(0); v < 10; v++ {
 		slice = slice.Add(v)
 	}
 	if slice.String() != "[0 1 2 3 4 5 6 7 8 9]" {
